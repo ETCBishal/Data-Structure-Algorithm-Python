@@ -104,20 +104,36 @@ class LinkedList:
                 break
             itr = itr.next
 
+
+    def get_index(self,data):
+        if self.head is None:
+            print("Linked List is Empty!")
+            return
+
+        itr = self.head
+        count = 0
+        while itr:
+            if itr.data == data:
+                found = True
+                return count
+            itr = itr.next
+            count+=1
+
+
     def remove_by_value(self,data_to_remove):
         if self.head is None:
             print("Linked List is Empty!")
             return
         itr = self.head
-        count = 0
         found = False
         while itr:
             if itr.data == data_to_remove:
-                self.remove_at(count)
+                index = self.get_index(itr.data)
+                self.remove_at(index)
                 found = True
                 break                
             itr = itr.next
-            count+=1
+            
         if found == False:
             print("Element not found!")
 
@@ -135,4 +151,8 @@ if __name__ == "__main__":
     ll.print()
     ll.remove_by_value("A")
     ll.remove_by_value("C++")
+    ll.print()
+    ll.get_index("C++")
+    print(ll.get_index("Harry"))
+    ll.remove_by_value("Harry")
     ll.print()
