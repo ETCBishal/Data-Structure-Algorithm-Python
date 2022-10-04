@@ -92,12 +92,47 @@ class LinkedList:
             itr = itr.next
             count += 1
 
+    def insert_after_value(self,data_after,data_to_insert):
+        if self.head is None:
+            print("Linked List is Empty!")
+            return
+
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert,itr.next)
+                break
+            itr = itr.next
+
+    def remove_by_value(self,data_to_remove):
+        if self.head is None:
+            print("Linked List is Empty!")
+            return
+        itr = self.head
+        count = 0
+        found = False
+        while itr:
+            if itr.data == data_to_remove:
+                self.remove_at(count)
+                found = True
+                break                
+            itr = itr.next
+            count+=1
+        if found == False:
+            print("Element not found!")
+
 
 if __name__ == "__main__":
+    
     ll = LinkedList()
     ll.insert_list_values(["Bishal", "Samir", "Sharad"])
     list_length = ll.get_length()
-    print(f"<Nodes_length={list_length}>")
+    print(f"<Node_length={list_length}>")
     ll.print()
     ll.insert_at(2, "Harry")
+    ll.insert_after_value("Harry","PythonConda")
+    ll.insert_after_value("PythonConda","C++")
+    ll.print()
+    ll.remove_by_value("A")
+    ll.remove_by_value("C++")
     ll.print()
