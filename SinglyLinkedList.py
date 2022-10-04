@@ -97,7 +97,7 @@ if __name__ == "__main__":
     ll = LinkedList()
     ll.insert_list_values(["Bishal", "Samir", "Sharad"])
     list_length = ll.get_length()
-    print(f"<Node_length={list_length}>")
+    print(f"<Nodes_length={list_length}>")
     ll.print()
     ll.insert_at(2, "Harry")
     ll.print()
